@@ -32,12 +32,8 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 
 
-const path = require('path');
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-
-
-app.get(/(.*)/, (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend', 'dist', 'index.html'));
+app.get('/', (req, res) => {
+    res.send('API is running...');
 });
 
 const PORT = process.env.PORT || 5000;
