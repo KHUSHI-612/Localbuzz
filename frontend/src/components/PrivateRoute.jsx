@@ -9,7 +9,7 @@ const PrivateRoute = ({ allowedRoles }) => {
     }
 
     if (allowedRoles && !allowedRoles.includes(userRole)) {
-        // If role not authorized, redirect to their home or login
+      
         return userRole === 'customer' ? <Navigate to="/customer-home" replace /> : <Navigate to="/owner-home" replace />;
     }
 

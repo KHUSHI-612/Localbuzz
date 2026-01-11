@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../api/axios';
+import authIllustration from '../assets/auth_illustration.png';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -42,77 +43,81 @@ const Signup = () => {
     };
 
     return (
-        <div className="page-container">
-            <div className="card animate-fade-in" style={{ width: '100%', maxWidth: '400px' }}>
-                <h2 className="title-gradient" style={{ textAlign: 'center', marginBottom: '2rem' }}>Create Account</h2>
+        <div className="auth-page-bg">
+            <div className="split-card animate-fade-in">
+                <div className="split-card-left">
+                    <h1 className="brand-title">Localy</h1>
+                    <p className="form-subtitle">create account</p>
 
-                {error && <div className="error-message" style={{ textAlign: 'center', marginBottom: '1rem' }}>{error}</div>}
+                    {error && <div className="error-message" style={{ textAlign: 'center', marginBottom: '1rem' }}>{error}</div>}
 
-                <form onSubmit={onSubmit}>
-                    <div className="input-group">
-                        <label htmlFor="name">Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={name}
-                            onChange={onChange}
-                            className="input-control"
-                            placeholder="Enter your name"
-                            required
-                        />
-                    </div>
+                    <form onSubmit={onSubmit}>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label htmlFor="name" style={{ display: 'block', color: '#555', marginBottom: '0.5rem', fontSize: '0.9rem' }}>full name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={name}
+                                onChange={onChange}
+                                className="input-clean"
+                                required
+                            />
+                        </div>
 
-                    <div className="input-group">
-                        <label htmlFor="email">Email Address</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={email}
-                            onChange={onChange}
-                            className="input-control"
-                            placeholder="Enter your email"
-                            required
-                        />
-                    </div>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label htmlFor="email" style={{ display: 'block', color: '#555', marginBottom: '0.5rem', fontSize: '0.9rem' }}>email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={email}
+                                onChange={onChange}
+                                className="input-clean"
+                                required
+                            />
+                        </div>
 
-                    <div className="input-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={password}
-                            onChange={onChange}
-                            className="input-control"
-                            placeholder="Enter password"
-                            required
-                        />
-                    </div>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label htmlFor="password" style={{ display: 'block', color: '#555', marginBottom: '0.5rem', fontSize: '0.9rem' }}>password</label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={password}
+                                onChange={onChange}
+                                className="input-clean"
+                                required
+                            />
+                        </div>
 
-                    <div className="input-group">
-                        <label htmlFor="role">I am a...</label>
-                        <select
-                            id="role"
-                            name="role"
-                            value={role}
-                            onChange={onChange}
-                            className="input-control"
-                        >
-                            <option value="customer">Customer</option>
-                            <option value="owner">Shop Owner</option>
-                        </select>
-                    </div>
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <label htmlFor="role" style={{ display: 'block', color: '#555', marginBottom: '0.5rem', fontSize: '0.9rem' }}>i am a...</label>
+                            <select
+                                id="role"
+                                name="role"
+                                value={role}
+                                onChange={onChange}
+                                className="input-clean"
+                                style={{ backgroundColor: 'white' }}
+                            >
+                                <option value="customer">Customer</option>
+                                <option value="owner">Shop Owner</option>
+                            </select>
+                        </div>
 
-                    <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                        Sign Up
-                    </button>
-                </form>
+                        <button type="submit" className="btn-clean">
+                            sign up
+                        </button>
+                    </form>
 
-                <p style={{ textAlign: 'center', marginTop: '1.5rem', color: 'var(--text-gray)' }}>
-                    Already have an account? <Link to="/login">Login</Link>
-                </p>
+                    <p style={{ textAlign: 'center', marginTop: '1rem', color: 'var(--text-gray)', fontSize: '0.9rem' }}>
+                        Already have an account? <Link to="/login" style={{ color: '#1a4d4d', fontWeight: '600' }}>Login</Link>
+                    </p>
+                </div>
+                <div className="split-card-right">
+                    <img src={authIllustration} alt="Signup Illustration" className="login-illustration" />
+                </div>
             </div>
         </div>
     );

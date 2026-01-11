@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../api/axios';
+import authIllustration from '../assets/auth_illustration.png';
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -40,49 +41,53 @@ const Login = () => {
     };
 
     return (
-        <div className="page-container">
-            <div className="card animate-fade-in" style={{ width: '100%', maxWidth: '400px' }}>
-                <h2 className="title-gradient" style={{ textAlign: 'center', marginBottom: '2rem' }}>Welcome Back</h2>
+        <div className="auth-page-bg">
+            <div className="split-card animate-fade-in">
+                <div className="split-card-left">
+                    <h1 className="brand-title">Localy</h1>
+                    <p className="form-subtitle">welcome back</p>
 
-                {error && <div className="error-message" style={{ textAlign: 'center', marginBottom: '1rem' }}>{error}</div>}
+                    {error && <div className="error-message" style={{ textAlign: 'center', marginBottom: '1rem' }}>{error}</div>}
 
-                <form onSubmit={onSubmit}>
-                    <div className="input-group">
-                        <label htmlFor="email">Email Address</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={email}
-                            onChange={onChange}
-                            className="input-control"
-                            placeholder="Enter your email"
-                            required
-                        />
-                    </div>
+                    <form onSubmit={onSubmit}>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label htmlFor="email" style={{ display: 'block', color: '#555', marginBottom: '0.5rem', fontSize: '0.9rem' }}>email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={email}
+                                onChange={onChange}
+                                className="input-clean"
+                                required
+                            />
+                        </div>
 
-                    <div className="input-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={password}
-                            onChange={onChange}
-                            className="input-control"
-                            placeholder="Enter password"
-                            required
-                        />
-                    </div>
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <label htmlFor="password" style={{ display: 'block', color: '#555', marginBottom: '0.5rem', fontSize: '0.9rem' }}>password</label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={password}
+                                onChange={onChange}
+                                className="input-clean"
+                                required
+                            />
+                        </div>
 
-                    <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                        Login
-                    </button>
-                </form>
+                        <button type="submit" className="btn-clean">
+                            login
+                        </button>
+                    </form>
 
-                <p style={{ textAlign: 'center', marginTop: '1.5rem', color: 'var(--text-gray)' }}>
-                    Don't have an account? <Link to="/signup">Sign Up</Link>
-                </p>
+                    <p style={{ textAlign: 'center', marginTop: '1rem', color: 'var(--text-gray)', fontSize: '0.9rem' }}>
+                        Don't have an account? <Link to="/signup" style={{ color: '#1a4d4d', fontWeight: '600' }}>Sign Up</Link>
+                    </p>
+                </div>
+                <div className="split-card-right">
+                    <img src={authIllustration} alt="Login Illustration" className="login-illustration" />
+                </div>
             </div>
         </div>
     );
