@@ -17,11 +17,11 @@ const OwnerShopView = () => {
     useEffect(() => {
         const fetchShopAndProducts = async () => {
             try {
-             
+
                 const { data: shop } = await api.get('/shops/my-shop');
                 setShopDetails(shop);
 
-           
+
                 if (shop && shop._id) {
                     const { data: products } = await api.get(`/products/${shop._id}`);
                     setItems(products);
@@ -63,7 +63,7 @@ const OwnerShopView = () => {
                 name: newItem.name,
                 price: parseFloat(newItem.price),
                 unit: newItem.unit,
-                image: categoryVegetables 
+                image: categoryVegetables
             };
 
             const { data: product } = await api.post('/products', payload);
@@ -77,33 +77,33 @@ const OwnerShopView = () => {
     };
 
     return (
-        <div className="page-container" style={{ backgroundColor: '#F3F4F6', minHeight: '100vh' }}>
+        <div className="page-container" style={{ backgroundColor: 'var(--bg-dark)', minHeight: '100vh' }}>
             <ShopkeeperNavbar />
 
             <div style={{ maxWidth: '1400px', margin: '0 auto', paddingTop: '100px', paddingBottom: '4rem', paddingLeft: '2rem', paddingRight: '2rem' }}>
 
                 {/* Shop Header - Full Width Style */}
-                <div className="card animate-fade-in" style={{ backgroundColor: 'white', borderRadius: '16px', padding: '2.5rem', marginBottom: '2rem', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
+                <div className="card animate-fade-in" style={{ backgroundColor: 'white', borderRadius: '16px', padding: '2.5rem', marginBottom: '2rem', border: '1px solid var(--primary)', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '2rem' }}>
                         <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
                                 <h1 style={{ fontSize: '2.5rem', color: '#111827', fontWeight: '800', margin: 0, letterSpacing: '-0.025em' }}>
                                     {shopDetails.name}
                                 </h1>
-                                <span className="role-badge" style={{ backgroundColor: '#DEF7EC', color: '#03543F', fontSize: '0.9rem' }}>{shopDetails.status}</span>
+                                <span className="role-badge" style={{ backgroundColor: 'var(--secondary)', color: 'var(--primary)', fontSize: '0.9rem', border: '1px solid var(--primary-light)' }}>{shopDetails.status}</span>
                             </div>
 
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', color: '#4B5563', fontSize: '1.1rem', marginTop: '1rem' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    <MapPin size={20} color="#0F766E" />
+                                    <MapPin size={20} color="var(--primary)" />
                                     <span>{shopDetails.location}</span>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    <div style={{ backgroundColor: '#E5E7EB', padding: '0 8px', borderRadius: '4px', fontSize: '0.9rem', fontWeight: '600' }}>PIN</div>
+                                    <div style={{ backgroundColor: 'var(--secondary)', padding: '0 8px', borderRadius: '4px', fontSize: '0.9rem', fontWeight: '600', color: 'var(--primary)' }}>PIN</div>
                                     <span>{shopDetails.pincode}</span>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    <Package size={20} color="#0F766E" />
+                                    <Package size={20} color="var(--primary)" />
                                     <span>{shopDetails.category || (shopDetails.tags && shopDetails.tags[0]) || 'General Store'}</span>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ const OwnerShopView = () => {
                         </button>
                     </div>
 
-                    {/* Toggle Open/Close */}
+               
                     <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem', borderTop: '1px solid #F3F4F6', paddingTop: '1.5rem' }}>
                         <span style={{ fontSize: '0.95rem', color: '#4B5563', fontWeight: '600' }}>Shop Status:</span>
                         <div
@@ -130,8 +130,8 @@ const OwnerShopView = () => {
                                 cursor: 'pointer',
                                 padding: '0.5rem 1rem',
                                 borderRadius: '50px',
-                                backgroundColor: shopDetails.status === 'Open' ? '#DEF7EC' : '#FDE8E8',
-                                border: shopDetails.status === 'Open' ? '1px solid #31C48D' : '1px solid #F98080',
+                                backgroundColor: shopDetails.status === 'Open' ? '#CCFBF1' : '#FFE4E6', // Light Teal for Open
+                                border: shopDetails.status === 'Open' ? '1px solid var(--primary)' : '1px solid #F43F5E',
                                 transition: 'all 0.3s ease'
                             }}
                         >
@@ -139,10 +139,10 @@ const OwnerShopView = () => {
                                 width: '10px',
                                 height: '10px',
                                 borderRadius: '50%',
-                                backgroundColor: shopDetails.status === 'Open' ? '#0E9F6E' : '#E02424'
+                                backgroundColor: shopDetails.status === 'Open' ? 'var(--primary)' : '#E11D48'
                             }}></div>
                             <span style={{
-                                color: shopDetails.status === 'Open' ? '#03543F' : '#9B1C1C',
+                                color: shopDetails.status === 'Open' ? 'var(--primary-dark)' : '#9F1239',
                                 fontWeight: '700',
                                 textTransform: 'uppercase',
                                 fontSize: '0.9rem'
@@ -156,7 +156,7 @@ const OwnerShopView = () => {
 
                 <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
 
-                    {/* Items Section - Takes 70% width on large screens */}
+                    
                     <div style={{ flex: '2', minWidth: '300px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'bottom', marginBottom: '1.5rem' }}>
                             <h2 style={{ fontSize: '1.8rem', fontWeight: '800', color: '#1F2937', margin: 0 }}>Inventory</h2>
@@ -171,11 +171,11 @@ const OwnerShopView = () => {
                             )}
                         </div>
 
-                        {/* Add Item Form - Inline */}
+                 
                         {isAdding && (
-                            <div className="card animate-fade-in" style={{ marginBottom: '2rem', border: '2px solid #0F766E', backgroundColor: '#F0FDFA', padding: '2rem' }}>
+                            <div className="card animate-fade-in" style={{ marginBottom: '2rem', border: '2px solid var(--primary)', backgroundColor: 'var(--secondary)', padding: '2rem' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                                    <h3 style={{ margin: 0, color: '#0F766E', fontSize: '1.4rem' }}>New Product Entry</h3>
+                                    <h3 style={{ margin: 0, color: 'var(--primary)', fontSize: '1.4rem' }}>New Product Entry</h3>
                                     <button onClick={() => setIsAdding(false)} style={{ background: 'transparent', border: 'none', color: '#6B7280', cursor: 'pointer', fontSize: '1.5rem' }}>&times;</button>
                                 </div>
 
@@ -232,12 +232,12 @@ const OwnerShopView = () => {
                                 <Package size={48} color="#D1D5DB" style={{ marginBottom: '1rem' }} />
                                 <h3 style={{ color: '#9CA3AF', fontWeight: '500' }}>Your inventory is empty</h3>
                                 <p style={{ color: '#D1D5DB' }}>Start adding items to sell</p>
-                                <button onClick={() => setIsAdding(true)} style={{ marginTop: '1rem', color: '#0F766E', background: 'transparent', border: 'none', fontWeight: '600', cursor: 'pointer' }}>+ Add First Item</button>
+                                <button onClick={() => setIsAdding(true)} style={{ marginTop: '1rem', color: 'var(--primary)', background: 'transparent', border: 'none', fontWeight: '600', cursor: 'pointer' }}>+ Add First Item</button>
                             </div>
                         ) : (
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
                                 {items.map(item => (
-                                    <div key={item.id} style={{ backgroundColor: 'white', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', border: '1px solid #F3F4F6', transition: 'transform 0.2s', cursor: 'pointer' }}
+                                    <div key={item.id} style={{ backgroundColor: 'white', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', border: '1px solid var(--primary-light)', transition: 'transform 0.2s', cursor: 'pointer' }}
                                         onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
                                         onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                                     >
@@ -252,7 +252,7 @@ const OwnerShopView = () => {
                                         <div style={{ padding: '1.2rem' }}>
                                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
                                                 <h4 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#1F2937', margin: 0, maxWidth: '70%' }}>{item.name}</h4>
-                                                <p style={{ color: '#0F766E', fontWeight: '700', fontSize: '1.1rem', margin: 0 }}>₹{item.price}</p>
+                                                <p style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '1.1rem', margin: 0 }}>₹{item.price}</p>
                                             </div>
 
                                             <div style={{ borderTop: '1px solid #F3F4F6', marginTop: '1rem', paddingTop: '1rem', display: 'flex', gap: '0.5rem' }}>
@@ -270,11 +270,11 @@ const OwnerShopView = () => {
                         )}
                     </div>
 
-                    {/* Insights Sidebar (Future Proofing) - Hidden on small screens if needed, or simple stats */}
+                  
                     <div style={{ flex: '1', minWidth: '280px' }}>
-                        <div className="card" style={{ backgroundColor: 'white', borderRadius: '16px', padding: '1.5rem', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)', position: 'sticky', top: '120px' }}>
+                        <div className="card" style={{ backgroundColor: 'white', borderRadius: '16px', padding: '1.5rem', border: '1px solid var(--primary)', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)', position: 'sticky', top: '120px' }}>
                             <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#111827' }}>Quick Actions</h3>
-                            <button className="btn" style={{ width: '100%', marginBottom: '1rem', justifyContent: 'flex-start', backgroundColor: '#F0FDFA', color: '#0F766E', border: '1px solid #CCFBF1' }}>
+                            <button className="btn" style={{ width: '100%', marginBottom: '1rem', justifyContent: 'flex-start', backgroundColor: 'var(--secondary)', color: 'var(--primary)', border: '1px solid var(--primary-light)' }}>
                                 Promote Shop
                             </button>
                             <button className="btn" style={{ width: '100%', marginBottom: '1rem', justifyContent: 'flex-start', backgroundColor: '#FFF7ED', color: '#C2410C', border: '1px solid #FFEDD5' }}>

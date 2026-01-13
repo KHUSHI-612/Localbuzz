@@ -10,6 +10,7 @@ import OwnerHome from './pages/OwnerHome';
 import PrivateRoute from './components/PrivateRoute';
 
 import CustomerShopView from './pages/CustomerShopView';
+import CustomerOrders from './pages/CustomerOrders';
 
 function App() {
   return (
@@ -18,11 +19,12 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
 
-        
+
         <Route element={<PrivateRoute allowedRoles={['customer']} />}>
           <Route path="/customer-home" element={<CustomerHome />} />
           <Route path="/shops" element={<Shops />} />
           <Route path="/shop/:id" element={<CustomerShopView />} />
+          <Route path="/customer-orders" element={<CustomerOrders />} />
         </Route>
 
         <Route element={<PrivateRoute allowedRoles={['owner']} />}>
@@ -32,7 +34,7 @@ function App() {
           <Route path="/owner-orders" element={<OwnerOrders />} />
         </Route>
 
-        {/* Redirect root to login for now */}
+      
         <Route path="/" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>

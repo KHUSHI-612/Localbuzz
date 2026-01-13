@@ -29,11 +29,22 @@ const getShopOrders = async (req, res) => {
             return res.status(404).json({ message: 'Shop not found' });
         }
 
-      
+
         const orders = await Order.find({ shop: shop._id })
             .populate('customer', 'name email')
             .sort({ createdAt: -1 });
 
+        res.json(orders);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+const getCustomerOrders = async (req, res) => {
+    try {
+        const orders = await Order.find({ customer: req.user._id })
+            .populate('shop', 'name location')
+            .sort({ createdAt: -1 });
         res.json(orders);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -58,4 +69,19 @@ const updateOrderStatus = async (req, res) => {
     }
 };
 
-module.exports = { createOrder, getShopOrders, updateOrderStatus };
+const deleteOrder = async (req, res) => {
+    try {
+        const order = await Order.findById(req.params.id);
+
+        if (order) {
+            await order.deleteOne();
+            res.json({ message: 'Order removed' });
+        } else {
+            res.status(404).json({ message: 'Order not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+module.exports = { createOrder, getShopOrders, getCustomerOrders, updateOrderStatus, deleteOrder };

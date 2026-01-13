@@ -22,75 +22,80 @@ const CustomerHome = () => {
         <div className="page-container">
             <Navbar />
 
-          
-            <section className="hero-section" style={{ margin: '100px 2rem 2rem 2rem', borderRadius: '30px', width: 'auto', padding: '1rem 0' }}>
-                <div className="container" style={{ marginLeft: 'auto', marginRight: 'auto', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1rem' }}>
-                    <div style={{ flex: 1, textAlign: 'left' }}>
-                        <div style={{ padding: '3rem 0' }}>
-                            <h1 className="hero-tagline" style={{ color: 'white', fontSize: '3.5rem', lineHeight: '1.2', fontWeight: '600' }}>
-                                Your local market, <br />
-                                online.
-                            </h1>
-                            <button
-                                className="btn btn-primary"
-                                style={{ marginTop: '1.5rem', fontSize: '1.2rem', padding: '0.8rem 2rem', backgroundColor: 'white', color: '#0F766E' }}
-                                onClick={() => navigate('/shops')}
-                            >
-                                Start Shopping
-                            </button>
-                        </div>
+
+            <section className="hero-section" style={{ margin: '20px 2rem 2rem 2rem', borderRadius: '30px', width: 'auto', padding: '0', backgroundColor: 'var(--primary)', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }}>
+                <div className="container" style={{ marginLeft: 'auto', marginRight: 'auto', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 4rem' }}>
+                    <div style={{ flex: 1, textAlign: 'left', padding: '3rem 0' }}>
+                        <h1 className="hero-tagline" style={{ color: 'white', fontSize: '3.5rem', lineHeight: '1.1', fontWeight: '700', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+                            Your local market, <br />
+                            online.
+                        </h1>
+                        <button
+                            className="btn"
+                            style={{
+                                marginTop: '0.5rem',
+                                fontSize: '1.1rem',
+                                padding: '0.8rem 2rem',
+                                backgroundColor: 'white',
+                                color: 'var(--primary)',
+                                fontWeight: '700',
+                                borderRadius: '8px',
+                                border: 'none',
+                                cursor: 'pointer'
+                            }}
+                            onClick={() => navigate('/shops')}
+                        >
+                            Start Shopping
+                        </button>
                     </div>
-                    <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+                    <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', position: 'relative' }}>
                         <img
                             src={homeIllustration}
                             alt="Groceries"
-                            style={{ maxWidth: '100%', height: 'auto', maxHeight: '45vh', objectFit: 'contain' }}
+                            style={{ maxWidth: '100%', height: 'auto', maxHeight: '420px', objectFit: 'contain', filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))', marginRight: '-20px' }}
                         />
                     </div>
                 </div>
             </section>
 
-          
+
             <section className="categories-section" style={{ padding: '0 2rem 4rem 2rem' }}>
-                <div className="container" style={{ marginLeft: 'auto', marginRight: 'auto', width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                <div className="container category-grid" style={{ marginLeft: 'auto', marginRight: 'auto', width: '100%' }}>
 
-                
-                    <div className="category-card" style={{ backgroundColor: '#F5E6CC', borderRadius: '16px', padding: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', minHeight: '200px', cursor: 'pointer' }}>
-                        <div style={{ flex: 1 }}>
-                            <h3 style={{ fontSize: '1.8rem', color: '#1F2937', marginBottom: '0.5rem', fontWeight: '700' }}>Fresh Vegetables</h3>
-                            <button className="btn" style={{ marginTop: '1rem', padding: '0.5rem 1.5rem', border: '1px solid #1F2937', background: 'transparent', borderRadius: '50px' }} onClick={() => navigate('/shops')}>Buy Now</button>
+                    <div className="category-card" style={{ backgroundColor: '#F5E6CC', borderRadius: '24px', padding: '2rem', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', minHeight: '220px', cursor: 'pointer', position: 'relative', overflow: 'hidden' }}>
+                        <div style={{ flex: 1, zIndex: 1 }}>
+                            <h3 style={{ fontSize: '1.8rem', color: '#1F2937', marginBottom: '1.5rem', fontWeight: '800', lineHeight: '1.2' }}>Fresh<br />Vegetables</h3>
+                            <button className="btn" style={{ padding: '0.6rem 1.8rem', border: '1px solid #1F2937', background: 'transparent', borderRadius: '50px', fontWeight: '600', fontSize: '0.9rem', cursor: 'pointer' }} onClick={() => navigate('/shops')}>Buy Now</button>
                         </div>
-                        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-                            <img src={categoryVegetables} alt="Fresh Vegetables" style={{ width: '200px', height: '200px', objectFit: 'contain' }} />
+                        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '-10px', bottom: '-10px' }}>
+                            <img src={categoryVegetables} alt="Fresh Vegetables" style={{ width: '180px', height: 'auto', objectFit: 'contain' }} />
                         </div>
                     </div>
 
-                 
-                    <div className="category-card" style={{ backgroundColor: '#E8F5E9', borderRadius: '16px', padding: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', minHeight: '200px', cursor: 'pointer' }}>
-                        <div style={{ flex: 1 }}>
-                            <h3 style={{ fontSize: '1.8rem', color: '#1F2937', marginBottom: '0.5rem', fontWeight: '700' }}>Fresh Fruits</h3>
-                            <button className="btn" style={{ marginTop: '1rem', padding: '0.5rem 1.5rem', border: '1px solid #1F2937', background: 'transparent', borderRadius: '50px' }} onClick={() => navigate('/shops')}>Buy Now</button>
+                    <div className="category-card" style={{ backgroundColor: '#E8F5E9', borderRadius: '24px', padding: '2rem', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', minHeight: '220px', cursor: 'pointer', position: 'relative', overflow: 'hidden' }}>
+                        <div style={{ flex: 1, zIndex: 1 }}>
+                            <h3 style={{ fontSize: '1.8rem', color: '#1F2937', marginBottom: '1.5rem', fontWeight: '800', lineHeight: '1.2' }}>Fresh<br />Fruits</h3>
+                            <button className="btn" style={{ padding: '0.6rem 1.8rem', border: '1px solid #1F2937', background: 'transparent', borderRadius: '50px', fontWeight: '600', fontSize: '0.9rem', cursor: 'pointer' }} onClick={() => navigate('/shops')}>Buy Now</button>
                         </div>
-                        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-                            <img src={categoryFruits} alt="Fresh Fruits" style={{ width: '200px', height: '200px', objectFit: 'contain' }} />
+                        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '0', bottom: '0' }}>
+                            <img src={categoryFruits} alt="Fresh Fruits" style={{ width: '180px', height: 'auto', objectFit: 'contain' }} />
                         </div>
                     </div>
 
-           
-                    <div className="category-card" style={{ backgroundColor: '#E1F5FE', borderRadius: '16px', padding: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', minHeight: '200px', cursor: 'pointer' }}>
-                        <div style={{ flex: 1 }}>
-                            <h3 style={{ fontSize: '1.8rem', color: '#1F2937', marginBottom: '0.5rem', fontWeight: '700' }}>Crunchy Snacks</h3>
-                            <button className="btn" style={{ marginTop: '1rem', padding: '0.5rem 1.5rem', border: '1px solid #1F2937', background: 'transparent', borderRadius: '50px' }} onClick={() => navigate('/shops')}>Buy Now</button>
+                    <div className="category-card" style={{ backgroundColor: '#E1F5FE', borderRadius: '24px', padding: '2rem', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', minHeight: '220px', cursor: 'pointer', position: 'relative', overflow: 'hidden' }}>
+                        <div style={{ flex: 1, zIndex: 1 }}>
+                            <h3 style={{ fontSize: '1.8rem', color: '#1F2937', marginBottom: '1.5rem', fontWeight: '800', lineHeight: '1.2' }}>Crunchy<br />Snacks</h3>
+                            <button className="btn" style={{ padding: '0.6rem 1.8rem', border: '1px solid #1F2937', background: 'transparent', borderRadius: '50px', fontWeight: '600', fontSize: '0.9rem', cursor: 'pointer' }} onClick={() => navigate('/shops')}>Buy Now</button>
                         </div>
-                        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-                            <img src={categorySnacks} alt="Crunchy Snacks" style={{ width: '200px', height: '200px', objectFit: 'contain' }} />
+                        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '10px', bottom: '10px' }}>
+                            <img src={categorySnacks} alt="Crunchy Snacks" style={{ width: '160px', height: 'auto', objectFit: 'contain' }} />
                         </div>
                     </div>
 
                 </div>
             </section>
 
-         
+
             <section className="browse-category-section" style={{ padding: '0 2rem 4rem 2rem' }}>
                 <div className="container" style={{ marginLeft: 'auto', marginRight: 'auto', width: '100%' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '2rem' }}>

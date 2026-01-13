@@ -17,7 +17,7 @@ const OwnerHome = () => {
                     navigate('/my-shop');
                 }
             } catch (error) {
-                // Shop not found is expected for new owners, do nothing
+                
                 console.log("No existing shop found or verification failed:", error.message);
             }
         };

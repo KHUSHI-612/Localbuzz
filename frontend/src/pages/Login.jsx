@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../api/axios';
-import authIllustration from '../assets/auth_illustration.png';
+
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -44,18 +44,24 @@ const Login = () => {
         <div className="auth-page-bg">
             <div className="split-card animate-fade-in">
                 <div className="split-card-left">
-                    <h1 className="brand-title">Localy</h1>
-                    <p className="form-subtitle">welcome back</p>
+                    <h1>New Here?</h1>
+                    <p>Sign up and discover a great amount of new opportunities!</p>
+                    <Link to="/signup">
+                        <button className="btn-outline">Sign Up</button>
+                    </Link>
+                </div>
+                <div className="split-card-right">
+                    <h2>Login to Your Account</h2>
 
-                    {error && <div className="error-message" style={{ textAlign: 'center', marginBottom: '1rem' }}>{error}</div>}
+                    {error && <div className="error-message">{error}</div>}
 
-                    <form onSubmit={onSubmit}>
-                        <div style={{ marginBottom: '1rem' }}>
-                            <label htmlFor="email" style={{ display: 'block', color: '#555', marginBottom: '0.5rem', fontSize: '0.9rem' }}>email</label>
+                    <form onSubmit={onSubmit} className="auth-form">
+                        <div className="input-group">
                             <input
                                 type="email"
                                 id="email"
                                 name="email"
+                                placeholder="Email"
                                 value={email}
                                 onChange={onChange}
                                 className="input-clean"
@@ -63,12 +69,12 @@ const Login = () => {
                             />
                         </div>
 
-                        <div style={{ marginBottom: '1.5rem' }}>
-                            <label htmlFor="password" style={{ display: 'block', color: '#555', marginBottom: '0.5rem', fontSize: '0.9rem' }}>password</label>
+                        <div className="input-group">
                             <input
                                 type="password"
                                 id="password"
                                 name="password"
+                                placeholder="Password"
                                 value={password}
                                 onChange={onChange}
                                 className="input-clean"
@@ -77,16 +83,9 @@ const Login = () => {
                         </div>
 
                         <button type="submit" className="btn-clean">
-                            login
+                            Login
                         </button>
                     </form>
-
-                    <p style={{ textAlign: 'center', marginTop: '1rem', color: 'var(--text-gray)', fontSize: '0.9rem' }}>
-                        Don't have an account? <Link to="/signup" style={{ color: '#1a4d4d', fontWeight: '600' }}>Sign Up</Link>
-                    </p>
-                </div>
-                <div className="split-card-right">
-                    <img src={authIllustration} alt="Login Illustration" className="login-illustration" />
                 </div>
             </div>
         </div>
